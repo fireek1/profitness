@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Добро пожаловать в наш фитнесс-центр!</h2>
+<a href="/menu">Купить абонемент</a>
+
+{% if user_id %}
+<form>
+    <a href="/logout">Выйти из аккаунта</a>
+</form>
+{% endif %}
+
+{% endblock %}

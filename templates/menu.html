@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Меню</h2>
+<ul>
+    {% for product in products %}
+    <li>
+        <h3>{{ product.name }}</h3>
+        <p>Цена: {{ product.price }} ₽</p>
+        <p>Ингредиенты: {{ product.description }}</p>
+        <p>В наличии: {{ product.stock }}</p>
+        <form action="/menu/buy/{{ product.id }}" method="post">
+            <button type="submit">Купить</button>
+        </form>
+        
+        {% if user.is_admin %}
+        <!-- Форма редактирования для администратора -->
+        <form action="/menu/edit/{{ product.id }}" method="post">
+            <h4>Редактировать товар</h4>
+            <label for="name">Название:</label>
+            <input type="text" id="name" name="name" value="{{ product.name }}" required>
+            <label for="price">Цена:</label>
+            <input type="number" id="price" name="price" value="{{ product.price }}" step="0.01" required>
+            <label for="description">Описание:</label>
+            <input type="text" id="description" name="description" value="{{ product.description }}" required>
+            <label for="stock">Количество:</label>
+            <input type="number" id="stock" name="stock" value="{{ product.stock }}" required>
+            <button type="submit">Сохранить изменения</button>
+        </form>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+
+<!-- Кнопка "На главную" -->
+<form action="/" method="get">
+    <button type="submit">На главную</button>
+</form>
+{% endblock %}

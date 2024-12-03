@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Регистрация</h2>
+<form action="/register" method="post">
+    <label for="username">Логин:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" name="password" required>
+
+    <label for="password">Имя:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="password">Возраст:</label>
+    <input type="number" id="age" name="age" required>
+    
+    <label for="password">Пол:</label>
+    <input type="text" id="gender" name="gender" required>
+
+    <button type="submit">Зарегистрироваться</button>
+</form>
+<p>Уже есть аккаунт? <a href="/login" class="reg">Войти</a></p>
+{% endblock %}
